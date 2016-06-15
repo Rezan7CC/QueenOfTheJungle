@@ -1,0 +1,15 @@
+﻿v 1.0.2.1
+	Bug Fixes:
+	- Fixed an overly eager news pop-up
+
+v 1.0.2
+	Improvements:
+	- The duplicate command (ctrl-D) is now available from the context menu.
+	- Middle mouse button can now be used to pan the view.
+	- MaskMatch now has a NoMatch option and the CompareOperator has a NotEquals option.
+
+v 1.0.1
+	Bug Fixes:
+	- Fixed an issue with Quick Starts not showing properly.
+
+v. 1.0 Initial Release

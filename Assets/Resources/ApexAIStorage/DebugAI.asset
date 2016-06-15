@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1719459976, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
+  m_Name: DebugAI
+  m_EditorClassIdentifier: 
+  description: 
+  version: 16777729
+  aiId: 57bd5328-bd3b-43fb-a3dc-6d5e7dc070d6
+  configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":a4a431b392e746609718951bccf5c5a8,"_id":57bd5328bd3b43fba3dc6d5e7dc070d6,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":a4a431b392e746609718951bccf5c5a8,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","score":100,"action":{"@type":"PrintString, Assembly-CSharp","outputString":"Test"}}}]}'
+  editorConfiguration: '{"offset":{"@x":278,"@y":95},"zoom":1,"SelectorView":{"ViewArea":{"@left":378,"@top":195,"@width":200,"@height":100},"DefaultQualifier":{"ActionView":{}}}}'
