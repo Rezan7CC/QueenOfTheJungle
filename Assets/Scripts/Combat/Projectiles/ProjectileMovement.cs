@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using QJHealth;
 
-namespace QJProjectiles
+namespace QJCombat
 {
     [RequireComponent(typeof(Health), typeof(ProjectileDamage))]
     public class ProjectileMovement : MonoBehaviour

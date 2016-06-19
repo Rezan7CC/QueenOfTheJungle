@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace QJProjectiles
+namespace QJCombat
 {
     public class ShootProjectiles : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace QJHealth
+namespace QJCombat
 {
     public class Health : MonoBehaviour
     {

@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using QJHealth;
 
-namespace QJProjectiles
+namespace QJCombat
 {
     public class ProjectileDamage : MonoBehaviour
     {

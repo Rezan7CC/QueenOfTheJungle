@@ -2,7 +2,7 @@
 using System.Collections;
 using QJMovement;
 
-namespace QJPlayer
+namespace QJInput
 {
     public class InputController : MonoBehaviour
     {
