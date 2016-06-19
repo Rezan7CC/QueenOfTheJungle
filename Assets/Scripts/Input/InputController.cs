@@ -23,7 +23,12 @@ namespace QJInput
             // Apply movement if there is movement input
             float movementInput = Input.GetAxisRaw("Horizontal");
             if (Mathf.Abs(movementInput) > 0)
+            {
+                basicMovement.MovementState = BasicMovement.EMovementState.Walking;
                 basicMovement.Move(BasicMovement.MoveDirection.Right, movementInput);
+            }
+            else
+                basicMovement.MovementState = BasicMovement.EMovementState.Idle;
 
             // Apply jump if there is jump input
             if (Input.GetButtonDown("Jump"))

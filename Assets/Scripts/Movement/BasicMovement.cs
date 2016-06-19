@@ -6,16 +6,52 @@ namespace QJMovement
     public class BasicMovement : MonoBehaviour
     {
         /// <summary>
-        /// The speed for normal movement
+        /// Whether the owner can walk
         /// </summary>
         [SerializeField]
-        float movementSpeed = 5;
+        bool canWalk = true;
+
+        /// <summary>
+        /// The speed for walking
+        /// </summary>
+        [SerializeField]
+        float walkingSpeed = 5;
+
+        /// <summary>
+        /// Whether the owner can sprint
+        /// </summary>
+        [SerializeField]
+        bool canSprint = true;
+
+        /// <summary>
+        /// The speed for sprinting
+        /// </summary>
+        [SerializeField]
+        float sprintingSpeed = 7.5f;
+
+        /// <summary>
+        /// Whether the owner can jump
+        /// </summary>
+        [SerializeField]
+        bool canJump = true;
 
         /// <summary>
         /// The force for jumps
         /// </summary>
         [SerializeField]
         float jumpForce = 6;
+
+        /// <summary>
+        /// Whether the owner can double jump
+        /// </summary>
+        [SerializeField]
+        bool canDoubleJump = true;
+
+        /// <summary>
+        /// The force for double jumps
+        /// </summary>
+        [SerializeField]
+        float doubleJumpForce = 4;
 
         /// <summary>
         /// The factor for movement speed while in the air
@@ -36,6 +72,11 @@ namespace QJMovement
         Vector2 motion = Vector2.zero;
 
         /// <summary>
+        /// Whether a double jump is active
+        /// </summary>
+        bool isDoubleJumpActive = false;
+
+        /// <summary>
         /// Cached CharacterController2D component.
         /// Handles the movement of the character
         /// </summary>
@@ -46,15 +87,55 @@ namespace QJMovement
             Left, Right
         }
 
+        public enum EMovementState
+        {
+            Idle, Walking, Sprinting
+        }
+
         /// <summary>
-        /// The speed for normal movement
+        /// Whether the owner can walk
         /// </summary>
-        public float MovementSpeed { get { return movementSpeed; } set { movementSpeed = value; } }
+        public bool CanWalk { get { return canWalk; } set { canWalk = value; } }
+
+        /// <summary>
+        /// The speed for walking
+        /// </summary>
+        public float WalkingSpeed { get { return walkingSpeed; } set { walkingSpeed = value; } }
+
+        /// <summary>
+        /// Whether the owner can sprint
+        /// </summary>
+        public bool CanSprint { get { return canSprint; } set { canSprint = value; } }
+
+        /// <summary>
+        /// The speed for sprinting
+        /// </summary>
+        public float SprintingSpeed { get { return sprintingSpeed; } set { sprintingSpeed = value; } }
+
+        /// <summary>
+        /// Current movement state
+        /// </summary>
+        public EMovementState MovementState { get; set; }
+
+        /// <summary>
+        /// Whether the owner can jump
+        /// </summary>
+        public bool CanJump { get { return canJump; } set { canJump = value; } }
 
         /// <summary>
         /// The force for jumps
         /// </summary>
         public float JumpForce { get { return jumpForce; } set { jumpForce = value; } }
+
+        /// <summary>
+        /// Whether the owner can double jump
+        /// </summary>
+        public bool CanDoubleJump { get { return canJump; } set { canJump = value; } }
+
+        /// <summary>
+        /// The force for double jumps
+        /// </summary>
+        public float DoubleJumpForce { get { return doubleJumpForce; } set { doubleJumpForce = value; } }
 
         /// <summary>
         /// The factor for movement speed while in the air
@@ -85,6 +166,8 @@ namespace QJMovement
             // Apply gravity if character is not grounded
             if (!characterController2D.isGrounded)
                 verticalVelocity += Physics2D.gravity.y * Time.deltaTime;
+            else
+                OnGrounded();
 
             // Apply the vertical velocity if there is one
             if (!Mathf.Approximately(verticalVelocity, 0))
@@ -107,9 +190,25 @@ namespace QJMovement
         public void Move(MoveDirection moveDirection, float factor)
         {
             factor = Mathf.Clamp(factor, -1.0f, 1.0f);
-            float movement = (moveDirection == MoveDirection.Right ? movementSpeed : -movementSpeed) * factor * Time.deltaTime;
+
+            float movement = 0;
+
+            if (canWalk && MovementState == EMovementState.Walking)
+                movement = walkingSpeed;
+            else if (canSprint && MovementState == EMovementState.Sprinting)
+                movement = sprintingSpeed;
+
+            if (movement == 0)
+                return;
+
+            if (moveDirection == MoveDirection.Left)
+                movement *= -1;
+
+            movement *= factor * Time.deltaTime;
+
             if (!characterController2D.isGrounded)
                 movement *= airControl;
+
             motion.x += movement;
         }
 
@@ -119,8 +218,22 @@ namespace QJMovement
         /// </summary>
         public void Jump()
         {
-            if (characterController2D.isGrounded)
+            if (canJump && characterController2D.isGrounded)
                 verticalVelocity = jumpForce;
+
+            else if(canDoubleJump && !isDoubleJumpActive)
+            {
+                isDoubleJumpActive = true;
+                verticalVelocity = doubleJumpForce;
+            }
+        }
+
+        /// <summary>
+        /// Event that gets called on impact with ground
+        /// </summary>
+        void OnGrounded()
+        {
+            isDoubleJumpActive = false;
         }
     }
 }
