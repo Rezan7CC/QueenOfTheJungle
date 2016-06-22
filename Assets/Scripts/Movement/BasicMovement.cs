@@ -210,6 +210,16 @@ namespace QJMovement
                 movement *= airControl;
 
             motion.x += movement;
+
+            // Update rotation
+            Vector3 localRotation = transform.localRotation.eulerAngles;
+
+            if (movement < 0)
+                localRotation.y = 180;
+            else if (movement > 0)
+                localRotation.y = 0;
+
+            transform.localRotation = Quaternion.Euler(localRotation);
         }
 
         /// <summary>
