@@ -33,6 +33,10 @@ namespace QJInput
             // Apply jump if there is jump input
             if (Input.GetButtonDown("Jump"))
                 basicMovement.Jump();
+
+            // Apply drop if there is drop input
+            if (Input.GetButtonDown("Drop"))
+                basicMovement.Drop();
         }
     }
 }

@@ -12,22 +12,10 @@ namespace QJMovement
         bool canWalk = true;
 
         /// <summary>
-        /// The speed for walking
-        /// </summary>
-        [SerializeField]
-        float walkingSpeed = 5;
-
-        /// <summary>
         /// Whether the owner can sprint
         /// </summary>
         [SerializeField]
         bool canSprint = true;
-
-        /// <summary>
-        /// The speed for sprinting
-        /// </summary>
-        [SerializeField]
-        float sprintingSpeed = 7.5f;
 
         /// <summary>
         /// Whether the owner can jump
@@ -36,16 +24,34 @@ namespace QJMovement
         bool canJump = true;
 
         /// <summary>
-        /// The force for jumps
-        /// </summary>
-        [SerializeField]
-        float jumpForce = 6;
-
-        /// <summary>
         /// Whether the owner can double jump
         /// </summary>
         [SerializeField]
         bool canDoubleJump = true;
+
+        /// <summary>
+        /// Whether the owner can drop down from one directional platforms
+        /// </summary>
+        [SerializeField]
+        bool canDropDown = true;
+
+        /// <summary>
+        /// The speed for walking
+        /// </summary>
+        [SerializeField]
+        float walkingSpeed = 5;
+
+        /// <summary>
+        /// The speed for sprinting
+        /// </summary>
+        [SerializeField]
+        float sprintingSpeed = 7.5f;
+
+        /// <summary>
+        /// The force for jumps
+        /// </summary>
+        [SerializeField]
+        float jumpForce = 6;
 
         /// <summary>
         /// The force for double jumps
@@ -98,14 +104,29 @@ namespace QJMovement
         public bool CanWalk { get { return canWalk; } set { canWalk = value; } }
 
         /// <summary>
-        /// The speed for walking
-        /// </summary>
-        public float WalkingSpeed { get { return walkingSpeed; } set { walkingSpeed = value; } }
-
-        /// <summary>
         /// Whether the owner can sprint
         /// </summary>
         public bool CanSprint { get { return canSprint; } set { canSprint = value; } }
+
+        /// <summary>
+        /// Whether the owner can jump
+        /// </summary>
+        public bool CanJump { get { return canJump; } set { canJump = value; } }
+
+        /// <summary>
+        /// Whether the owner can double jump
+        /// </summary>
+        public bool CanDoubleJump { get { return canJump; } set { canJump = value; } }
+
+        /// <summary>
+        /// Whether the owner can drop down from one directional platforms
+        /// </summary>
+        public bool CanDropDown { get { return canDropDown; } set { canDropDown = value; } }
+
+        /// <summary>
+        /// The speed for walking
+        /// </summary>
+        public float WalkingSpeed { get { return walkingSpeed; } set { walkingSpeed = value; } }
 
         /// <summary>
         /// The speed for sprinting
@@ -118,19 +139,9 @@ namespace QJMovement
         public EMovementState MovementState { get; set; }
 
         /// <summary>
-        /// Whether the owner can jump
-        /// </summary>
-        public bool CanJump { get { return canJump; } set { canJump = value; } }
-
-        /// <summary>
         /// The force for jumps
         /// </summary>
         public float JumpForce { get { return jumpForce; } set { jumpForce = value; } }
-
-        /// <summary>
-        /// Whether the owner can double jump
-        /// </summary>
-        public bool CanDoubleJump { get { return canJump; } set { canJump = value; } }
 
         /// <summary>
         /// The force for double jumps
@@ -235,6 +246,32 @@ namespace QJMovement
             {
                 isDoubleJumpActive = true;
                 verticalVelocity = doubleJumpForce;
+            }
+        }
+
+        /// <summary>
+        /// Drops down through one directional platforms
+        /// </summary>
+        public void Drop()
+        {
+            if (!canDropDown)
+                return;
+
+            StartCoroutine(DropThroughPlatform());
+        }
+
+        /// <summary>
+        /// Disables character collision for one directional platforms for a short duration
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator DropThroughPlatform()
+        {
+            float delay = 0.05f;
+            while(delay > 0)
+            {
+                characterController2D.ignoreOneWayPlatformsThisFrame = true;
+                delay -= Time.deltaTime;
+                yield return new WaitForEndOfFrame();
             }
         }
 
