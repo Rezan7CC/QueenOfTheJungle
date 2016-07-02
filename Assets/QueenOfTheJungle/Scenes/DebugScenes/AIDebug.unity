@@ -356,7 +356,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -388,7 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   astarData:
-    dataString: UEsDBBQAAAgIAAAIIewuKtzl8wAAAHMBAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFdkN1uwjAMhd/F15k0+kNLr5G4mbaK7QW8xKVW0wTlh1EQ7760UtG0O9vy+Xx87nCKrKC5wwV1JGig2mKucllWZbbBDquXqizK75JqtSt2dZHl8BDgrA3QmKi1AE/oZP+FpyRuMfQdG8Xm9G4VgYARr3v2AY1M8FcBmkcOfj54XfoJmo2AW6pnLE4SfSIHF0lA9JTt237yLP06Cz3L4bjudaj9v+ERFUe/UB3J6DxfaBVjDPaNzTB7exJH9MOfAKptnZyw4cCoWzKow7Q4tWcyq8bgOGfVWjbh4PDcp0+Vw58D30b7JLPp7Kd0ROZj0S5uH79QSwMEFAAACAgAAAgh7K3ggoN2AAAAhAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQEdjLEOgjAQQP/lZmyk7dnC6uBm2A3DaQ/o4JVAMTHGf5e6veG994EXL2tMAi0Y5ZWGCsaF5mmFtt5xi2GnG7gTmWAe6FDXNJA7OLR4R/ahsY232kBfQX7PfKUn/4uO8jRECVFG1aUo+VK2RZMU+Jw2ycU79t8fUEsBAi0AFAAACAgAAAgh7C4q3OXzAAAAcwEAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7K3ggoN2AAAAhAAAAAkAJAAAAAAAAAAAAAAAQAEAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAABAgAAAAA=
+    dataString: UEsDBBQAAAgIAAAIIeykFf908AAAAHMBAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFtkN1qwzAMhd9F1xlknZttuS70pmyh2wsIR05EHLn4p2ta+u5zMsJ2MQQCHXQ+H+sGXeIW6huc0SaCGtSTKqvSGFWpcq4HszEvRKravpbqeYsE9wK8cxFqSdYWEAi97j+xy+YGY29YWpbuzbUEBYx42XGIKDrDywIsjxzD/OBlmaelX3OfsThpDJkcfaICUqDNrumnwDo7DNqQxdizHo7r4j/iEVtOef8x80gnH/hMKxFTdAeWYQ4XVnHEMPy5wByEhSOjbUjQxp+I7kSyOgTH+VSNY4l7j6c+f7T1+LXn6+h+o7IY96E9kbwv5kW+fwNQSwMEFAAACAgAAAgh7FHWFft1AAAAhAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQEdjLEOgzAMBf/FM41SMCllZehWsVcMkWKDhzoIQqUK8e8l1VtuuHs7fGhZJSq0UJnGlFDAuPh5WqG9nrhJOOkFWKF1lhkd2rwLl9wQoavvFm+1JxgKSN+Znv5N/6L3aWLRIDqaPoqmR77NmsZAXdw0Zc8Oxw9QSwECLQAUAAAICAAACCHspBX/dPAAAABzAQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHsUdYV+3UAAACEAAAACQAkAAAAAAAAAAAAAAA9AQAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAP0BAAAAAA==
     upgradeData: 
     data_backup: 
     file_cachedStartup: {fileID: 0}
@@ -463,7 +462,7 @@ MonoBehaviour:
     pivotPointRoot: {fileID: 0}
     spreadOutCount: 1
   showGraphs: 1
-  lastUniqueAreaIndex: 3
+  lastUniqueAreaIndex: 0
 --- !u!4 &897817230
 Transform:
   m_ObjectHideFlags: 0
@@ -473,7 +472,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.129, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -717,7 +715,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -883,7 +880,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2146452947}
   - {fileID: 1683949122}

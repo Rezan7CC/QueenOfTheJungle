@@ -3,7 +3,7 @@ using System.Collections;
 using Apex.AI;
 using Apex.AI.Components;
 
-namespace QJAI
+namespace QJAI.QJBehaviour
 {
     [ExecuteInEditMode]
     public class UtilityAI : MonoBehaviour, IContextProvider

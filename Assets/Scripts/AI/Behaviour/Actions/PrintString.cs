@@ -4,7 +4,7 @@ using Apex.AI;
 using Apex.AI.Components;
 using Apex.Serialization;
 
-namespace QJAI
+namespace QJAI.QJBehaviour
 {
     public class PrintString : IAction
     {

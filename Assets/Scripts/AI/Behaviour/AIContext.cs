@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Apex.AI;
 using Apex.AI.Components;
 
-namespace QJAI
+namespace QJAI.QJBehaviour
 {
     public class AIContext : IAIContext
     {
