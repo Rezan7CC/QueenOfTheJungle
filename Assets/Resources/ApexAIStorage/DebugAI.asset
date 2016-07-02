@@ -16,5 +16,5 @@ MonoBehaviour:
   aiId: 57bd5328-bd3b-43fb-a3dc-6d5e7dc070d6
   configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":a4a431b392e746609718951bccf5c5a8,"_id":57bd5328bd3b43fba3dc6d5e7dc070d6,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":a4a431b392e746609718951bccf5c5a8,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI","score":100,"action":{"@type":"PrintString, Assembly-CSharp","outputString":"Test"}}}]}'
-  editorConfiguration: '{"offset":{"@x":278,"@y":95},"zoom":1,"SelectorView":{"ViewArea":{"@left":378,"@top":195,"@width":200,"@height":100},"DefaultQualifier":{"ActionView":{}}}}'
+    ApexAI","score":100,"action":{"@type":"QJAI.PrintString, Assembly-CSharp","outputString":"Test"}}}]}'
+  editorConfiguration: '{"offset":{"@x":64,"@y":81},"zoom":1,"SelectorView":{"ViewArea":{"@left":164,"@top":181,"@width":200,"@height":100},"DefaultQualifier":{"ActionView":{}}}}'
