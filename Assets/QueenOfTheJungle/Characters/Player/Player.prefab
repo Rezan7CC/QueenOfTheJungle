@@ -13,6 +13,8 @@ GameObject:
   - 50: {fileID: 5053222}
   - 61: {fileID: 6103918}
   - 114: {fileID: 11400818}
+  - 114: {fileID: 11479760}
+  - 114: {fileID: 11448958}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -45,7 +47,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 482672}
   m_RootOrder: 0
@@ -58,7 +59,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 450048}
   m_Father: {fileID: 0}
@@ -171,6 +171,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f5bd8497f2a4e0478184873c1fdb10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11448958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d0400e33f87054f9336f4b5cb36e58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canHang: 1
+  hangOffset: -1
+  interpDuration: 0.25
+--- !u!114 &11479760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f5e5d608044cf4fb6f02e332115022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21243744

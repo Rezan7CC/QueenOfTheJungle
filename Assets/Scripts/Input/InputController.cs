@@ -11,11 +11,18 @@ namespace QJInput
         /// </summary>
         BasicMovement basicMovement;
 
+        /// <summary>
+        /// Cached Hang component
+        /// </summary>
+        Hang hang;
+
         void Awake()
         {
             basicMovement = GetComponent<BasicMovement>();
             if (basicMovement == null)
                 Debug.LogError("Movement component not found!");
+
+            hang = GetComponent<Hang>();
         }
 
         void Update()
@@ -32,11 +39,21 @@ namespace QJInput
 
             // Apply jump if there is jump input
             if (Input.GetButtonDown("Jump"))
-                basicMovement.Jump();
+            {
+                // Deactivate hanging if character is currently hanging instead of performing jump
+                if (hang != null && hang.IsHanging)
+                    hang.DeactiveHanging();
+                else
+                    basicMovement.Jump();
+            }
+
+            // Deactivate hanging on positive vertical movement
+            if (Input.GetAxisRaw("Vertical") > 0 && hang != null && hang.IsHanging)
+                hang.DeactiveHanging();
 
             // Apply drop if there is drop input
-            if (Input.GetButtonDown("Drop"))
-                basicMovement.Drop();
+            if (Input.GetButtonDown("Drop") && hang != null)
+                hang.ActivateHanging();
         }
     }
 }

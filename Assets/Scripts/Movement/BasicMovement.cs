@@ -67,12 +67,6 @@ namespace QJMovement
         float airControl = 0.75f;
 
         /// <summary>
-        /// The current vertical velocity.
-        /// Affected by jumps and gravity and affects motion
-        /// </summary>
-        float verticalVelocity = 0;
-
-        /// <summary>
         /// The current frame motion.
         /// Updates the position via MovementController and resets every frame
         /// </summary>
@@ -155,12 +149,6 @@ namespace QJMovement
         public float AirControl { get { return airControl; } set { airControl = value; } }
 
         /// <summary>
-        /// The current vertical velocity.
-        /// Affected by jumps and gravity and affects motion
-        /// </summary>
-        public float VerticalVelocity { get { return verticalVelocity; } set { verticalVelocity = value; } }
-
-        /// <summary>
         /// The current frame motion.
         /// Updates the position via MovementController and resets every frame
         /// </summary>
@@ -175,15 +163,8 @@ namespace QJMovement
 
         void LateUpdate()
         {
-            // Apply gravity if character is not grounded
-            if (!movementController.IsGrounded)
-                verticalVelocity += Physics2D.gravity.y * Time.deltaTime;
-            else
+            if(movementController.IsGrounded)
                 OnGrounded();
-
-            // Apply the vertical velocity if there is one
-            if (!Mathf.Approximately(verticalVelocity, 0))
-                motion.y += verticalVelocity * Time.deltaTime;
 
             // Update the position with the current motion
             if (motion != Vector2.zero)
@@ -241,12 +222,18 @@ namespace QJMovement
         public void Jump()
         {
             if (canJump && movementController.IsGrounded)
-                verticalVelocity = jumpForce;
-
-            else if(canDoubleJump && !isDoubleJumpActive)
+            {
+                Vector2 velocity = movementController.Velocity;
+                velocity.y = jumpForce;
+                movementController.Velocity = velocity;
+            }
+            else if (canDoubleJump && !isDoubleJumpActive)
             {
                 isDoubleJumpActive = true;
-                verticalVelocity = doubleJumpForce;
+
+                Vector2 velocity = movementController.Velocity;
+                velocity.y = doubleJumpForce;
+                movementController.Velocity = velocity;
             }
         }
 
