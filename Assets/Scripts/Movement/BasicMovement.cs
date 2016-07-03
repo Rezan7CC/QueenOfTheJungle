@@ -3,6 +3,7 @@ using System.Collections;
 
 namespace QJMovement
 {
+    [RequireComponent(typeof(MovementController))]
     public class BasicMovement : MonoBehaviour
     {
         /// <summary>
@@ -73,7 +74,7 @@ namespace QJMovement
 
         /// <summary>
         /// The current frame motion.
-        /// Updates the position via CharacterController2D and resets every frame
+        /// Updates the position via MovementController and resets every frame
         /// </summary>
         Vector2 motion = Vector2.zero;
 
@@ -83,10 +84,10 @@ namespace QJMovement
         bool isDoubleJumpActive = false;
 
         /// <summary>
-        /// Cached CharacterController2D component.
+        /// Cached Movement controller component.
         /// Handles the movement of the character
         /// </summary>
-        CharacterController2D characterController2D;
+        MovementController movementController;
 
         public enum MoveDirection
         {
@@ -161,21 +162,21 @@ namespace QJMovement
 
         /// <summary>
         /// The current frame motion.
-        /// Updates the position via CharacterController2D and resets every frame
+        /// Updates the position via MovementController and resets every frame
         /// </summary>
         Vector2 Motion { get { return motion; }}
 
         void Awake()
         {
-            characterController2D = GetComponent<CharacterController2D>();
-            if (characterController2D == null)
-                Debug.LogError("CharacterController2D not found!");
+            movementController = GetComponent<MovementController>();
+            if (movementController == null)
+                Debug.LogError("MovementController not found!");
         }
 
         void LateUpdate()
         {
             // Apply gravity if character is not grounded
-            if (!characterController2D.isGrounded)
+            if (!movementController.IsGrounded)
                 verticalVelocity += Physics2D.gravity.y * Time.deltaTime;
             else
                 OnGrounded();
@@ -187,7 +188,7 @@ namespace QJMovement
             // Update the position with the current motion
             if (motion != Vector2.zero)
             {
-                characterController2D.move(motion);
+                movementController.Move(motion);
                 motion = Vector2.zero;
             }
         }
@@ -217,7 +218,7 @@ namespace QJMovement
 
             movement *= factor * Time.deltaTime;
 
-            if (!characterController2D.isGrounded)
+            if (!movementController.IsGrounded)
                 movement *= airControl;
 
             motion.x += movement;
@@ -239,7 +240,7 @@ namespace QJMovement
         /// </summary>
         public void Jump()
         {
-            if (canJump && characterController2D.isGrounded)
+            if (canJump && movementController.IsGrounded)
                 verticalVelocity = jumpForce;
 
             else if(canDoubleJump && !isDoubleJumpActive)
@@ -266,13 +267,16 @@ namespace QJMovement
         /// <returns></returns>
         IEnumerator DropThroughPlatform()
         {
+            movementController.IgnoreOneWayPlatforms = true;
+
             float delay = 0.05f;
             while(delay > 0)
             {
-                characterController2D.ignoreOneWayPlatformsThisFrame = true;
                 delay -= Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
+
+            movementController.IgnoreOneWayPlatforms = false;
         }
 
         /// <summary>

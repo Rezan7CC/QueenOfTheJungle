@@ -7,6 +7,9 @@ using System.Collections.Generic;
 
 namespace QJMovement
 {
+    /// <summary>
+    /// Should be replaced by MovementController
+    /// </summary>
     [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D))]
     public class CharacterController2D : MonoBehaviour
     {
